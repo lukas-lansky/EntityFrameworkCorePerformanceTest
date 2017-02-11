@@ -1,7 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
 using Lansky.EntityFrameworkCorePerformanceTest.Dapper;
 using Lansky.EntityFrameworkCorePerformanceTest.EfCore;
-using System;
 
 namespace Lansky.EntityFrameworkCorePerformanceTest
 {
@@ -10,8 +9,8 @@ namespace Lansky.EntityFrameworkCorePerformanceTest
         static void Main(string[] args)
         {
             BenchmarkRunner.Run<DapperBenchmark>();
-            BenchmarkRunner.Run<EfCoreBenchmark>();
-            Console.ReadLine();
+            BenchmarkRunner.Run<EfCoreWithTrackingBenchmark>();
+            BenchmarkRunner.Run<EfCoreWithoutTrackingBenchmark>();
         }
     }
 }

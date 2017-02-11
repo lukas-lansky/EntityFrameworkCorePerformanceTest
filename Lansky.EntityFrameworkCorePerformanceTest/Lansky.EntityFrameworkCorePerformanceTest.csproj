@@ -238,7 +238,8 @@
   <ItemGroup>
     <Compile Include="BenchmarkConfiguration.cs" />
     <Compile Include="Dapper\DapperBenchmark.cs" />
-    <Compile Include="EfCore\EfCoreBenchmark.cs" />
+    <Compile Include="EfCore\EfCoreWithoutTrackingBenchmark.cs" />
+    <Compile Include="EfCore\EfCoreWithTrackingBenchmark.cs" />
     <Compile Include="TheBenchmark.cs" />
     <Compile Include="Dapper\DapperQueries.cs" />
     <Compile Include="EfCore\EfCoreQueries.cs" />

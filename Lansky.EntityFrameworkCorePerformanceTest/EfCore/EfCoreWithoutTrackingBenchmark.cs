@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lansky.EntityFrameworkCorePerformanceTest.EfCore
 {
-    public class EfCoreBenchmark : TheBenchmark
+    public class EfCoreWithoutTrackingBenchmark : TheBenchmark
     {
-        public EfCoreBenchmark() : base(new EfCoreQueries())
+        public EfCoreWithoutTrackingBenchmark() : base(new EfCoreQueries(false))
         {
         }
     }

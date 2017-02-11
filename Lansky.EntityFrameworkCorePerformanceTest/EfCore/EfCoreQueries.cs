@@ -8,9 +8,9 @@ namespace Lansky.EntityFrameworkCorePerformanceTest.EfCore
     {
         private readonly WideWorldImportersContext _dbContext;
 
-        public EfCoreQueries()
+        public EfCoreQueries(bool tracking)
         {
-            _dbContext = new WideWorldImportersContext();
+            _dbContext = new WideWorldImportersContext() { UseTracking = tracking };
         }
 
         public int CountInvoices()
@@ -22,6 +22,8 @@ namespace Lansky.EntityFrameworkCorePerformanceTest.EfCore
                 .Join(_dbContext.Customers, prevJoin => prevJoin.CustomerId, customer => customer.CustomerId, (prevJoin, customer) => new { prevJoin.StockItemId, customer.CustomerName, prevJoin.InvoiceId })
                 .Join(_dbContext.StockItems, prevJoin => prevJoin.StockItemId, stockItem => stockItem.StockItemId, (prevJoin, stockItem) => new { stockItem.StockItemName, prevJoin.CustomerName, prevJoin.InvoiceId })
                 .OrderBy(t => t.InvoiceId)
+                .Take(top)
+                .ToList()
                 .Select(t => new CustomerStockItemTuple { CustomerName = t.CustomerName, StockItemName = t.StockItemName })
                 .ToList();
     }
