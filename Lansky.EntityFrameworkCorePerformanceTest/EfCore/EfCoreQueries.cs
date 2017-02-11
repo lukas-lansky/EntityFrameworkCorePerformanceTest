@@ -1,18 +1,28 @@
-﻿using System;
+﻿using Lansky.EntityFrameworkCorePerformanceTest.EfCore.Entities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Lansky.EntityFrameworkCorePerformanceTest.EfCore
 {
-    class EfCoreQueries : IQueries
+    public class EfCoreQueries : IQueries
     {
-        public int CountInvoices()
+        private readonly WideWorldImportersContext _dbContext;
+
+        public EfCoreQueries()
         {
-            throw new NotImplementedException();
+            _dbContext = new WideWorldImportersContext();
         }
 
+        public int CountInvoices()
+            => _dbContext.Invoices.Count();
+
         public IList<CustomerStockItemTuple> GetCustomerStockItemTuples(int top)
-        {
-            throw new NotImplementedException();
-        }
+            => _dbContext.Invoices
+                .Join(_dbContext.InvoiceLines, invoice => invoice.InvoiceId, invoiceLine => invoiceLine.InvoiceLineId, (invoice, invoiceLine) => new { invoice.CustomerId, invoiceLine.StockItemId, invoice.InvoiceId })
+                .Join(_dbContext.Customers, prevJoin => prevJoin.CustomerId, customer => customer.CustomerId, (prevJoin, customer) => new { prevJoin.StockItemId, customer.CustomerName, prevJoin.InvoiceId })
+                .Join(_dbContext.StockItems, prevJoin => prevJoin.StockItemId, stockItem => stockItem.StockItemId, (prevJoin, stockItem) => new { stockItem.StockItemName, prevJoin.CustomerName, prevJoin.InvoiceId })
+                .OrderBy(t => t.InvoiceId)
+                .Select(t => new CustomerStockItemTuple { CustomerName = t.CustomerName, StockItemName = t.StockItemName })
+                .ToList();
     }
 }

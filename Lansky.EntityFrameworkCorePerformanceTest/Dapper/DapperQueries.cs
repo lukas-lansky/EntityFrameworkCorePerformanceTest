@@ -23,6 +23,7 @@ namespace Lansky.EntityFrameworkCorePerformanceTest.Dapper
                     from [Sales].[Invoices] i
                     join [Sales].[InvoiceLines] il on i.InvoiceID = il.InvoiceID
                     join [Sales].[Customers] c on i.CustomerID = c.CustomerID
-                    join [Warehouse].[StockItems] si on il.StockItemID = si.StockItemID").ToList();
+                    join [Warehouse].[StockItems] si on il.StockItemID = si.StockItemID
+                    order by i.[InvoiceID]").ToList();
     }
 }

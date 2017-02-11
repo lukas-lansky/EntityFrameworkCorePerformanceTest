@@ -236,9 +236,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DapperBenchmark.cs" />
+    <Compile Include="BenchmarkConfiguration.cs" />
+    <Compile Include="Dapper\DapperBenchmark.cs" />
+    <Compile Include="EfCore\EfCoreBenchmark.cs" />
+    <Compile Include="TheBenchmark.cs" />
     <Compile Include="Dapper\DapperQueries.cs" />
     <Compile Include="EfCore\EfCoreQueries.cs" />
+    <Compile Include="EfCore\Entities\BuyingGroups.cs" />
+    <Compile Include="EfCore\Entities\Cities.cs" />
+    <Compile Include="EfCore\Entities\ColdRoomTemperatures.cs" />
+    <Compile Include="EfCore\Entities\Colors.cs" />
+    <Compile Include="EfCore\Entities\Countries.cs" />
+    <Compile Include="EfCore\Entities\CustomerCategories.cs" />
+    <Compile Include="EfCore\Entities\Customers.cs" />
+    <Compile Include="EfCore\Entities\CustomerTransactions.cs" />
+    <Compile Include="EfCore\Entities\DeliveryMethods.cs" />
+    <Compile Include="EfCore\Entities\InvoiceLines.cs" />
+    <Compile Include="EfCore\Entities\Invoices.cs" />
+    <Compile Include="EfCore\Entities\OrderLines.cs" />
+    <Compile Include="EfCore\Entities\Orders.cs" />
+    <Compile Include="EfCore\Entities\PackageTypes.cs" />
+    <Compile Include="EfCore\Entities\PaymentMethods.cs" />
+    <Compile Include="EfCore\Entities\People.cs" />
+    <Compile Include="EfCore\Entities\PurchaseOrderLines.cs" />
+    <Compile Include="EfCore\Entities\PurchaseOrders.cs" />
+    <Compile Include="EfCore\Entities\SpecialDeals.cs" />
+    <Compile Include="EfCore\Entities\StateProvinces.cs" />
+    <Compile Include="EfCore\Entities\StockGroups.cs" />
+    <Compile Include="EfCore\Entities\StockItemHoldings.cs" />
+    <Compile Include="EfCore\Entities\StockItems.cs" />
+    <Compile Include="EfCore\Entities\StockItemStockGroups.cs" />
+    <Compile Include="EfCore\Entities\StockItemTransactions.cs" />
+    <Compile Include="EfCore\Entities\SupplierCategories.cs" />
+    <Compile Include="EfCore\Entities\Suppliers.cs" />
+    <Compile Include="EfCore\Entities\SupplierTransactions.cs" />
+    <Compile Include="EfCore\Entities\SystemParameters.cs" />
+    <Compile Include="EfCore\Entities\TransactionTypes.cs" />
+    <Compile Include="EfCore\Entities\VehicleTemperatures.cs" />
+    <Compile Include="EfCore\Entities\WideWorldImportersContext.cs" />
+    <Compile Include="EfCore\WideWorldImportersContext.cs" />
     <Compile Include="IQueries.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -251,9 +287,7 @@
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EfCore\Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

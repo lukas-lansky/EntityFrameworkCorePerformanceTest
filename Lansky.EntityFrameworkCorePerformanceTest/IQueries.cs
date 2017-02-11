@@ -2,7 +2,7 @@
 
 namespace Lansky.EntityFrameworkCorePerformanceTest
 {
-    interface IQueries
+    public interface IQueries
     {
         int CountInvoices();
 
